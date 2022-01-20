@@ -16,7 +16,27 @@ td
 }
 .bookmark-category
 {
+    width: 75%;
     padding: 3px;
+    border-bottom-style: dotted;
+    border-bottom-width: 2px;
+}
+.bookmark-block
+{
+    border-style: double;
+}
+.bookmark-block-column
+{
+    width: 25%;
+}
+.bookmark-element
+{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 8px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 8px;
 }
 .bookmark-link
 {

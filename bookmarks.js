@@ -171,31 +171,52 @@ var info = {
 
 var target = document.getElementById("bookmark-collection")
 var table = document.createElement("table")
-var tbody = document.createElement("tbody")
-table.appendChild(tbody)
 target.appendChild(table)
 
+var screenWidth = document.body.offsetWidth
+var tableColumnNumber = 1
+if (screenWidth >= 1200)
+{
+    tableColumnNumber = 3
+}
+else if (screenWidth >= 800)
+{
+    tableColumnNumber = 2
+}
+for (var h = 0; h < tableColumnNumber; h++)
+{
+    var tableColumn = document.createElement("td")
+    tableColumn.className = "bookmark-table-column"
+    table.appendChild(tableColumn)
+}
+var tableColumns = table.childNodes
 for (var i = 0; i < info.data.length; i++)
 {
     var tableInfo = info.data[i]
-    var tableTd = document.createElement("td")
     var categoryHeader = document.createElement("h2")
     categoryHeader.innerText = tableInfo.category
     categoryHeader.className = "bookmark-category"
-    var elementsBlock = document.createElement("div")
-    for (var j = 0; j < tableInfo.elements.length; j++)
+    var elementsBlock = document.createElement("table")
+    elementsBlock.className = "bookmark-block"
+    for (var j = 0; j < 4; j++)
+    {
+        var blockColumn = document.createElement("td")
+        blockColumn.className = "bookmark-block-column"
+        elementsBlock.appendChild(blockColumn)
+    }
+    var blockColumns = elementsBlock.childNodes
+    for (var k = 0; k < tableInfo.elements.length; k++)
     {
         var element = document.createElement("div")
         element.className = "bookmark-element"
         var elementLink = document.createElement("a")
-        elementLink.href = tableInfo.elements[j].link
+        elementLink.href = tableInfo.elements[k].link
         elementLink.className = "bookmark-link"
-        elementLink.innerText = tableInfo.elements[j].title
+        elementLink.innerText = tableInfo.elements[k].title
         elementLink.target = "_blank"
         element.appendChild(elementLink)
-        elementsBlock.appendChild(element)
+        blockColumns[k % 4].appendChild(element)
     }
-    tableTd.appendChild(categoryHeader)
-    tableTd.appendChild(elementsBlock)
-    tbody.appendChild(tableTd)
+    tableColumns[i % tableColumnNumber].appendChild(categoryHeader)
+    tableColumns[i % tableColumnNumber].appendChild(elementsBlock)
 }
