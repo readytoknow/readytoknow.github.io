@@ -1,0 +1,26 @@
+table
+{
+    width: 100%;
+}
+
+td
+{
+    width: 33%;
+    vertical-align: top;
+}
+
+.bookmark-element
+{
+    margin: 3px;
+    padding: 2px;
+}
+.bookmark-category
+{
+    padding: 3px;
+}
+.bookmark-link
+{
+    font-family: "JetBrains Mono", Consolas, ".AppleSystemUIFont", Arial, serif;
+    color: #404040;
+}
+
