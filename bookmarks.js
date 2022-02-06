@@ -214,54 +214,76 @@ var info = {
     ]
 }
 
-var target = document.getElementById("bookmark-collection")
-var table = document.createElement("table")
-target.appendChild(table)
+function createBookmarkTable(tableColumnNumber)
+{
+    var target = document.getElementById("bookmark-collection")
+    target.innerHTML = ""
+    var table = document.createElement("table")
+    target.appendChild(table)
+    for (var h = 0; h < tableColumnNumber; h++)
+    {
+        var tableColumn = document.createElement("td")
+        tableColumn.className = "bookmark-table-column"
+        table.appendChild(tableColumn)
+    }
+    var tableColumns = table.childNodes
+    for (var i = 0; i < info.data.length; i++)
+    {
+        var tableInfo = info.data[i]
+        var categoryHeader = document.createElement("h2")
+        categoryHeader.innerText = tableInfo.category
+        categoryHeader.className = "bookmark-category"
+        var elementsBlock = document.createElement("table")
+        elementsBlock.className = "bookmark-block"
+        for (var j = 0; j < 4; j++)
+        {
+            var blockColumn = document.createElement("td")
+            blockColumn.className = "bookmark-block-column"
+            elementsBlock.appendChild(blockColumn)
+        }
+        var blockColumns = elementsBlock.childNodes
+        for (var k = 0; k < tableInfo.elements.length; k++)
+        {
+            var element = document.createElement("div")
+            element.className = "bookmark-element"
+            var elementLink = document.createElement("a")
+            elementLink.href = tableInfo.elements[k].link
+            elementLink.className = "bookmark-link"
+            elementLink.innerText = tableInfo.elements[k].title
+            elementLink.target = "_blank"
+            element.appendChild(elementLink)
+            blockColumns[k % 4].appendChild(element)
+        }
+        tableColumns[i % tableColumnNumber].appendChild(categoryHeader)
+        tableColumns[i % tableColumnNumber].appendChild(elementsBlock)
+    }
+}
 
-var screenWidth = document.body.offsetWidth
 var tableColumnNumber = 1
-if (screenWidth >= 1200)
+if (document.body.offsetWidth >= 1200)
 {
     tableColumnNumber = 3
 }
-else if (screenWidth >= 800)
+else if (document.body.offsetWidth >= 800)
 {
     tableColumnNumber = 2
 }
-for (var h = 0; h < tableColumnNumber; h++)
-{
-    var tableColumn = document.createElement("td")
-    tableColumn.className = "bookmark-table-column"
-    table.appendChild(tableColumn)
-}
-var tableColumns = table.childNodes
-for (var i = 0; i < info.data.length; i++)
-{
-    var tableInfo = info.data[i]
-    var categoryHeader = document.createElement("h2")
-    categoryHeader.innerText = tableInfo.category
-    categoryHeader.className = "bookmark-category"
-    var elementsBlock = document.createElement("table")
-    elementsBlock.className = "bookmark-block"
-    for (var j = 0; j < 4; j++)
+
+createBookmarkTable(tableColumnNumber)
+
+window.onresize = function(){
+    var columnNumber = 1
+    if (document.body.offsetWidth >= 1200)
     {
-        var blockColumn = document.createElement("td")
-        blockColumn.className = "bookmark-block-column"
-        elementsBlock.appendChild(blockColumn)
+        columnNumber = 3
     }
-    var blockColumns = elementsBlock.childNodes
-    for (var k = 0; k < tableInfo.elements.length; k++)
+    else if (document.body.offsetWidth >= 800)
     {
-        var element = document.createElement("div")
-        element.className = "bookmark-element"
-        var elementLink = document.createElement("a")
-        elementLink.href = tableInfo.elements[k].link
-        elementLink.className = "bookmark-link"
-        elementLink.innerText = tableInfo.elements[k].title
-        elementLink.target = "_blank"
-        element.appendChild(elementLink)
-        blockColumns[k % 4].appendChild(element)
+        columnNumber = 2
     }
-    tableColumns[i % tableColumnNumber].appendChild(categoryHeader)
-    tableColumns[i % tableColumnNumber].appendChild(elementsBlock)
+    if (columnNumber != tableColumnNumber)
+    {
+        tableColumnNumber = columnNumber
+        createBookmarkTable(tableColumnNumber)
+    }
 }
