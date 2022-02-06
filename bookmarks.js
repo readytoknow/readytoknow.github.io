@@ -68,6 +68,11 @@ var info = {
                     "title": "Runoob",
                     "link": "https://www.runoob.com/",
                     "icon": ""
+                },
+                {
+                    "title": "Docker",
+                    "link": "https://docs.docker.com",
+                    "icon": ""
                 }
             ]
         },
@@ -162,6 +167,46 @@ var info = {
                 {
                     "title": "阿里云盘",
                     "link": "https://www.aliyundrive.com/drive",
+                    "icon": ""
+                },
+                {
+                    "title": "百度地图",
+                    "link": "https://map.baidu.com",
+                    "icon": ""
+                },
+                {
+                    "title": "V2Free",
+                    "link": "https://w1.v2free.net/user",
+                    "icon": ""
+                },
+                {
+                    "title": "AirPortal",
+                    "link": "https://airportal.cn/",
+                    "icon": ""
+                }
+            ]
+        },
+        {
+            "category": "learning",
+            "elements": [
+                {
+                    "title": "Numpy教程",
+                    "link": "https://www.osgeo.cn/numpy",
+                    "icon": ""
+                },
+                {
+                    "title": "数据挖掘",
+                    "link": "http://dataminingguide.books.yourtion.com/",
+                    "icon": ""
+                },
+                {
+                    "title": "图形学",
+                    "link": "https://www.bilibili.com/video/BV1X7411F744",
+                    "icon": ""
+                },
+                {
+                    "title": "Docker教程",
+                    "link": "https://vuepress.mirror.docker-practice.com",
                     "icon": ""
                 }
             ]
