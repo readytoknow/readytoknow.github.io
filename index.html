@@ -15,24 +15,5 @@
 <div id="bookmark-collection">
     <script src="bookmarks.js"></script>
 </div>
-<div id="devil">
-    <script>
-        function loop()
-        {
-            var a = 1, b = 1, n = 1
-            while (1)
-            {
-                n = n + 1
-                var tmp = b
-                b = a + b
-                a = b
-                var devilDiv = document.getElementById("devil-result")
-                devilDiv.innerText = "第" + toString(n) + "次: " + toString(b)
-            }
-        }
-    </script>
-    <button onclick="loop()">点此开始消耗计算资源(不可逆!)</button>
-    <div id="devil-result"></div>
-</div>
 </body>
 </html>

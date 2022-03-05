@@ -183,6 +183,21 @@ var info = {
                     "title": "AirPortal",
                     "link": "https://airportal.cn/",
                     "icon": ""
+                },
+                {
+                    "title": "BiliBili",
+                    "link": "https://www.bilibili.com",
+                    "icon": ""
+                },
+                {
+                    "title": "Geogebra",
+                    "link": "https://www.geogebra.org",
+                    "icon": ""
+                },
+                {
+                    "title": "Musicbed",
+                    "link": "https://www.musicbed.com",
+                    "icon": ""
                 }
             ]
         },
